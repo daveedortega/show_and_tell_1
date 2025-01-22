@@ -1,0 +1,367 @@
+---
+title: "show_and_tell_1"
+author: "DAOA"
+format: revealjs
+editor: visual
+---
+
+## R & RStudio Basics
+
+:::: {.columns}
+
+::: {.column width="40%"}
+![](./show_and_tell_1_files/imgs/r_logo.jpeg){}
+![](./show_and_tell_1_files/imgs/r_studio.png){}
+:::
+
+::: {.column width="60%"}
+
+<div style="text-align: right;">
+![](./show_and_tell_1_files/imgs/meme-1.jpg.webp){width=70%}
+</div>
+
+<div style="position: absolute; bottom: 0; right: 0;">
+**DAOA - Enero 2025**  
+</div>
+:::
+
+::::
+
+
+
+## What is R?
+
+Created in 1993 by Ross Ihaka and Robert Gentleman at the University of Auckland
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.incremental}
+
+
+- Open-Source programming language
+- Designed specifically for statistical computing, data manipulation, and graphical visualization.
+
+:::
+:::
+
+::: {.column width="50%"}
+<div style="text-align: center;">
+![](./show_and_tell_1_files/imgs/r_ws.png){width=100%}
+</div>
+:::
+
+::::
+## Why use R?
+
+::: {.incremental}
+
+
+- **Specifically designed for statistical computing** 
+
+- **Vast ecosystem of __packages__** like __ggplot2__ and __dplyr__, making it ideal for analyzing, modeling, and visualizing complex datasets.
+
+- **Extensive Open-Source Community** with thousands of contributors and packages available on CRAN, and GitHub, R offers **__cutting-edge tools for machine learning__**.
+
+- Integrates seamlessly with tools like **Quarto** and **Shiny**, enabling users to create reproducible reports, interactive dashboards, and presentations directly from their code.
+
+:::
+
+## Operadores
+
+```{r eval=T, echo=F}
+# Operarios básicos
+print(paste(class(1), 1, sep = ' - '))
+print(paste(class(1.3), 1.3, sep = ' - '))
+print(paste(class("Hola mundo"), 'Hola mundo', sep = ' - '))
+print(paste(class(TRUE), TRUE, sep = ' - '))
+```
+
+## Comandos Básicos
+
+```{r eval=T, echo=T}
+# Operarios básicos
+1 + 1
+1 - 3
+2 * 3
+4/3
+
+print('Saludos')
+```
+## Loop structure {class="small-text"}
+
+* Can loop over numbers, vectors, lists
+
+```{r eval=T, echo=T}
+# Numeric vector
+for(i in range(1:10)){
+  print(i)
+}
+# String vector
+for(i in c('A', 'b', 'Planes', 'AMLO')){
+  print(i)
+}
+
+```
+
+## Functions
+Can either do something or return a value
+```{r eval=T, echo=T}
+hello_world <- function(name){
+  print(paste('Hello world I\'m', name))
+}
+
+hello_world('David')
+
+square_list <- function(a){
+  temp = 0
+  for(i in a){
+    temp = temp + i**2 
+  }
+  return(temp)
+}
+
+square_list(c(1,2,3))
+```
+
+## Data frames
+
+Basic data science object, can either be a cross section, time-series or panel
+
+* **Cross-section**: Data on where observation (row) refers to a single period, for a single i
+* **Time-series**: Data where each observation refers to a single period but every row refer to the same i
+* **Panel**: Data on where observation refers to a pair of time - individual relationship
+  * We say we have a **complete panel** when there is an observation for every **i** for every **t**
+
+## Cross-section example
+Like the _iris_ dataset
+Contains measurements of various attributes of iris flowers from three different species.
+
+```{r, echo = F, eval = T}
+
+data("iris")
+
+head(iris)
+
+```
+
+## Time-Series example
+Like the _economics_ dataset
+Contains economic indicators values for everyday
+
+```{r, echo = F, eval = T}
+library(ggplot2)
+data("economics")
+
+tail(economics)
+
+```
+
+
+## R Studio
+
+:::: {.columns}
+
+::: {.column width="80%"}
+Created in 2011 by J.J. Allaire, the founder of Allaire Corporation, in 2022 when RStudio, the company, rebranded itself as Posit. 
+:::
+
+::: {.column width="20%"}
+![](./show_and_tell_1_files/imgs/posit_logo.svg){width=100%}
+:::
+
+::::
+
+
+::: {.incremental}
+
+
+- Integrated Development Environment (IDE) for R and Python.
+- User-friendly interface for coding, debugging, and visualizing in R and Python.
+- Includes features like syntax highlighting, code completion, data visualization previews.
+- Available on Windows, macOS, and Linux. 
+
+:::
+
+## R Studio
+
+<div style="text-align: center">
+![](./show_and_tell_1_files/imgs/rstudio.png){width=70%}
+</div>
+
+## Download free os software!
+
+
+* [R Language](https://cran.rstudio.com)
+
+* [R Studio](https://posit.co/download/rstudio-desktop/)
+
+## Some advantages
+
+* **Script structure**: Allows for a combination of vertical script writing as well as whole processes (mixture between vistudio & jupyter)
+
+* **Project development**: Allows the user to create an ecosystem to relates local variables as well as other scripts.
+
+* **Good libraries for everything!**: Like python, but more specific to data science and data visualization without anything.
+
+
+## Test it!
+
+<div style="text-align: center">
+![](./show_and_tell_1_files/imgs/script_pane.png){width=80%}
+</div>
+
+
+## Libraries
+
+::: {.unincremental}
+
+- Collections of functions, which can interact with the shell even in other programming languages.
+
+- Add ready-to-go functionalities to R!
+
+- Two of the best known (indispensible): _tidyverse_ and _shiny_
+
+:::
+:::: {.columns}
+
+:::{.column width="50%"}
+<div style="text-align: center">
+![](./show_and_tell_1_files/imgs/tidyverse.png){width=80%}
+</div>
+:::
+::: {.column width="50%"}
+
+<div style="text-align: center">
+![](./show_and_tell_1_files/imgs/shiny_1.png){width=50%}
+</div>
+:::
+::::
+
+## Tidyverse
+
+* Incredibly powerful, clean, intuitive and well structured collection of libraries to manage dataframe objects in such a way as to obtain what we want from the data. 
+
+* On the whole reading, writing, cleaning, manipulating, and summarizing data. 
+
+Examples!
+
+## Tidyverse usage
+Pipe Operator (and then)
+```{r eval=T, echo=T}
+# Load Library
+library(tidyverse)
+# Load some data
+data("iris")
+# Check out the data structure
+iris %>% glimpse()
+
+```
+
+## Pipe
+```{r eval=T, echo=T}
+# Count data
+iris %>% count(Species)
+
+iris %>% group_by(Species) %>% 
+  summarise(suma_sepal = sum(Sepal.Length), 
+            promedio_petal = mean(Petal.Width))
+```
+
+## Make Graphs
+
+```{r eval=T, echo=T}
+# Graph data
+
+iris %>% group_by(Species) %>% 
+  summarise(suma_sepal = sum(Sepal.Length), 
+            promedio_petal = mean(Petal.Width)) %>% 
+  ggplot(aes(Species, promedio_petal)) + 
+  geom_col()
+```
+
+## Customize a lot!
+
+```{r  eval=T}
+# Graph data
+library(scales)
+iris %>% group_by(Species) %>% 
+  summarise(promedio_petal = mean(Petal.Width)) %>% 
+  ggplot(aes(Species, promedio_petal, fill = Species)) + 
+  geom_col(color = 'black')+
+  geom_label(aes(label = comma(promedio_petal)), size = 8, color = 'white')+
+  labs(x = 'Especie', y = 'Ancho de Pétalo Promedio') + 
+  scale_fill_manual(values = c('#ae2000', '#BC9459', '#225B4D'))+
+  theme_bw()+
+  theme(legend.position = 'none', 
+        axis.text.x = element_text(size = 18), 
+        axis.title = element_text(size = 20, face = 'bold'))
+  
+```
+
+## Other types of graphs
+
+```{r  eval=T}
+# Graph data
+iris %>% group_by(Species) %>% 
+  ggplot(aes(Species, Petal.Width, fill = Species)) + 
+  geom_boxplot(color = 'black')+
+  # geom_label(aes(label = comma(promedio_petal)), size = 8, color = 'white')+
+  labs(x = 'Especie', y = 'Ancho de Pétalo Promedio') + 
+  scale_fill_manual(values = c('#ae2000', '#BC9459', '#225B4D'))+
+  theme_bw()+
+  theme(legend.position = 'none', 
+        axis.text.x = element_text(size = 18), 
+        axis.title = element_text(size = 20, face = 'bold'))
+  
+```
+
+## line graphs
+```{r  eval=T}
+library(ggrepel)
+data("economics")
+# Graph data
+economics %>%
+  ggplot(aes(date, pop)) + 
+  geom_line(color = 'blue', linewidth = 1) +
+  geom_text_repel(data = economics %>% filter(date==max(date)), aes(label = comma(pop)), nudge_x = -2500) +
+  # geom_label(aes(label = comma(promedio_petal)), size = 8, color = 'white')+
+  labs(x = '', y = 'Población de EEUU') + 
+  theme_bw()+
+  theme(legend.position = 'none', 
+        axis.text.x = element_text(size = 18), 
+        axis.title = element_text(size = 20, face = 'bold'))
+  
+```
+
+## Shiny
+
+* R package that enables users to build **interactive web applications** directly from R code.
+
+* Simplifies creating user interfaces and **server logic in R**, supporting interactive elements like sliders, text inputs, and plots. 
+
+* Data processing, visualization, and analysis occur directly within the app, allowing interactivity with R's statistical and machine learning tools.
+
+## Examples of Shiny Dashboards
+
+* [Tablero Covid](https://vac-lshtm.shinyapps.io/ncov_tracker/)
+
+* [Tablero de Migración](http://tablerosadyt.shinyapps.io/tablero_migracion/)
+
+* [Tablero Seguridad](https://seguridad.shinyapps.io/tablero_seguridad/)
+
+## Shiny structure
+
+Shiny automatically generates and includes packages which handle bootstrap and javascripts interactions. 
+The one thing to understand is the UI - SERVER - DATA interactions.
+
+* **ui.r** - Script in which we define objects that the user sees or interacts
+* **server.r** - uses toggles and buttons from the ui and executes code based on its observed interactions
+* **data** - can be stored anywhere INSIDE the shiny app
+
+## Publishing
+
+* If you create a free account in [ShinyApps.io](https://www.shinyapps.io) you can create up to **3** apps limited to 1 ram gb 
+
+
+
